@@ -11,6 +11,7 @@ class Type:
         Science_Fiction = "Science Fiction"
         Thriller = "Thriller"
 
+
 FILMS = [
         {'name':'Encanto',
         'id' : 1,
