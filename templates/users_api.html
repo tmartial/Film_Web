@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+      <h1>Users</h1>
+      {# Here is a div to fill with info or errors messages regarding API interaction #}
+      <div id="fetchError" class="alert"></div>
+
+      <p>
+        <strong>
+          <button id="updateButton">Fetch users</button>
+          <span id="fetchInfo"></span>
+        </strong>
+      </p>
+      <ul id="usersUL"></ul>
+
+      <div id="userContent">
+        <h2 id="userName" class="userDetail"></h2>
+        <ul id="userUL" class="userDetail"></ul>
+      </div>
+
+{% endblock %}
