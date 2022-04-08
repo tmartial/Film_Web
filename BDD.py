@@ -1,22 +1,3 @@
-import os
-
-BASEDIR = os.path.abspath(os.path.dirname(__file__))
-DB_FILE = os.path.join(BASEDIR, "database.sqlite")
-
-class Config:
-    DEBUG = False
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    DB_FILE = DB_FILE
-    SQLALCHEMY_DATABASE_URI = f'sqlite:///{DB_FILE}'
-
-
-class Production(Config):
-    DEBUG = False
-
-class Development(Config):
-    ENV = "development"
-    DEBUG = True
-
 class Type:
         Action = "Action"
         Animated = "Animated"
@@ -75,6 +56,3 @@ FILMS = [
         'starring': Starring.starring_Wolf_of_Wall_Street
         },
         ]
-
-class WebDevException(Exception):
-        pass
