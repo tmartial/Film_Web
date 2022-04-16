@@ -12,7 +12,7 @@ class Type:
         Thriller = "Thriller"
 
 
-FILMS = [
+FILMS = { 1 :
         {'name':'Encanto',
         'id' : 1,
         'Type': Type.Animated,
@@ -20,32 +20,32 @@ FILMS = [
         'year': '2021',
         'starring': ["Stephanie Beatriz", "Maria Cecilia Botero", "John Leguizamo", "Mauro Castillo"]
         },
-        {'name':'Titanic',
+        2 : {'name':'Titanic',
         'id' : 2,
         'Type': Type.Romantic,
         'url':'https://en.wikipedia.org/wiki/Titanic_(1997_film)',
         'year': '1997',
         'starring': ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"]
         },
-        {'name':'Turning red',
+        3 : {'name':'Turning red',
         'id' : 3,
         'Type': Type.Animated,
         'url':'https://en.wikipedia.org/wiki/Turning_Red',
         'year': '2022',
         'starring': ["Rosalie Chiang", "Sandra Oh", "Ava Morse", "Hyein Park", "Orion Lee"]
         },
-        {'name':'Avatar',
+        4 : {'name':'Avatar',
         'id' : 4,
         'Type': Type.Science_Fiction,
         'url':'https://en.wikipedia.org/wiki/Avatar_(2009_film)',
         'year': '2009',
         'starring': ["Sam Worthington", "Zoe Saldana", "Stephen Lang", "Michelle Rodriguez", "Sigourney Weaver" ]
         },
-        {'name':'Wolf of Wall Street',
+        5 : {'name':'Wolf of Wall Street',
         'id' : 5,
         'Type': Type.Comedy,
         'url':'https://en.wikipedia.org/wiki/The_Wolf_of_Wall_Street_(2013_film)',
         'year': '2013',
         'starring': ["Leonardo DiCaprio", "Jonah Hill", "Margot Robbie", "Matthew McConaughey", "Kyle Chandler"]
         },
-        ]
+        }
