@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+
+.two{
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+</style>
+
+    <h1>Years of publication :</h1>
+
+    <li class="two"><a href="{{url_for('year_movie', years=before1980)}}">Before 1980</a></li>
+
+    <li class="two"><a href="{{url_for('year_movie', years=between1980_2000)}}">1980 ~ 2000</a></li>
+
+    <li class="two"><a href="{{url_for('year_movie', years=between2000_2010)}}">2000 ~ 2010</a></li>
+
+    <li class="two"><a href="{{url_for('year_movie', years=between2010_2020)}}">2010 ~ 2020</a></li>
+
+    <li class="two"><a href="{{url_for('year_movie', years=after_2020)}}">After 2020</a></li>
+
+{% endblock %}
