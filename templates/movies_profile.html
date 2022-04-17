@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+      <h1>{{film["name"]}}'s Profile<h1> <!-- film.name -->
+
+            <h3>Type : {{film["Type"]}}<h3> <!-- fikm.Type -->
+            <h3>Actors : {{film["starring"]}}<h3>     <!-- film.starring -->
+            <h3> Year : {{ film["year"]}}<h3> <!-- film.year -->
+            <h3><a href={{wiki}}> Link to Wikipedia of this movie</a><h3>  <!-- film.url -->
+
+
+
+{% endblock %}

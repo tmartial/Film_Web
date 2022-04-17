@@ -3,5 +3,10 @@
 {% block content %}
 <h1>Movies</h1>
 
-<p>Our favorite movies</p>
+<h2>Our favorite movies</h2>
+<ul>
+ {% for n in names %}
+  <li><a href="{{url_for('movies_profile',name=n)}}">{{n}} </a></li>
+{% endfor %}
+</ul>
 {% endblock %}
