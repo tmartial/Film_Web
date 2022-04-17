@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{# Have a look at base.html as well to understand how templating works ;)  #}
+
+{% block content %}
+
+<h1 align="center">My Cinema</h1>
+
+
+<p>Hello!<br> Welcome to our website with all of our favorite movies inside. You can find all the informations of every film here!</p>
+
+<h2 align="center">Search the movies according to : <h2>
+
+<style>
+.round_icon{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+li{
+  list-style: none;
+  display: inline-table;
+  height: 50px;
+}
+
+.two{
+  text-align: center;
+}
+
+</style>
+<div align="center">
+  <ul>
+    <li>
+      <figure>
+        <a href="{{url_for('types_page')}}">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> TYPES </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="{{url_for('actors_page')}}">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> ACTORS </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="{{url_for('years_page')}}">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> RELEASE YEAR </figcaption>
+      </figure>
+    </li>
+  </ul>
+  <ul class="two">
+    <li>
+      <figure>
+        <a href="http://127.0.0.1:5000/movies">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> TEST </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="http://127.0.0.1:5000/movies">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> TEST </figcaption>
+      </figure>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+{% endblock %}
