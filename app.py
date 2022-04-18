@@ -25,7 +25,8 @@ def movies_profile(name):
         if (FILMS[k]["name"]==name):
             this_film=FILMS[k]
             wiki=FILMS[k]["url"]
-    return render_template('movies_profile.html',film=this_film,wiki=wiki )
+            cover=FILMS[k]["cover_url"]
+    return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover )
 
 
 
