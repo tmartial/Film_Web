@@ -18,34 +18,44 @@ FILMS = { 1 :
         'Type': Type.Animated,
         'url':'https://en.wikipedia.org/wiki/Encanto_(film)',
         'year': '2021',
-        'starring': ["Stephanie Beatriz", "Maria Cecilia Botero", "John Leguizamo", "Mauro Castillo"]
+        'starring': ["Stephanie Beatriz", "Maria Cecilia Botero", "John Leguizamo", "Mauro Castillo"],
+        'film_length' : '1h49',
+        'cover_url':'https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg'
         },
         2 : {'name':'Titanic',
         'id' : 2,
         'Type': Type.Romantic,
         'url':'https://en.wikipedia.org/wiki/Titanic_(1997_film)',
         'year': '1997',
-        'starring': ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"]
+        'starring': ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"],
+        'film_length' : '3h14',
+        'cover_url':'https://filmxposure.files.wordpress.com/2015/08/titanic-cover.jpg'
         },
         3 : {'name':'Turning red',
         'id' : 3,
         'Type': Type.Animated,
         'url':'https://en.wikipedia.org/wiki/Turning_Red',
         'year': '2022',
-        'starring': ["Rosalie Chiang", "Sandra Oh", "Ava Morse", "Hyein Park", "Orion Lee"]
+        'starring': ["Rosalie Chiang", "Sandra Oh", "Ava Morse", "Hyein Park", "Orion Lee"],
+        'film_length' : '1h40',
+        'cover_url':'https://mobile-img.lpcdn.ca/v2/924x/d38ad891cab2355483bf025e54322338.jpg'
         },
         4 : {'name':'Avatar',
         'id' : 4,
         'Type': Type.Science_Fiction,
         'url':'https://en.wikipedia.org/wiki/Avatar_(2009_film)',
         'year': '2009',
-        'starring': ["Sam Worthington", "Zoe Saldana", "Stephen Lang", "Michelle Rodriguez", "Sigourney Weaver" ]
+        'starring': ["Sam Worthington", "Zoe Saldana", "Stephen Lang", "Michelle Rodriguez", "Sigourney Weaver" ],
+        'film_length' : '2h42',
+        'cover_url':'https://fr.web.img6.acsta.net/medias/nmedia/18/78/95/70/19485155.jpg'
         },
         5 : {'name':'Wolf of Wall Street',
         'id' : 5,
         'Type': Type.Comedy,
         'url':'https://en.wikipedia.org/wiki/The_Wolf_of_Wall_Street_(2013_film)',
         'year': '2013',
-        'starring': ["Leonardo DiCaprio", "Jonah Hill", "Margot Robbie", "Matthew McConaughey", "Kyle Chandler"]
+        'starring': ["Leonardo DiCaprio", "Jonah Hill", "Margot Robbie", "Matthew McConaughey", "Kyle Chandler"],
+        'film_length' : '3h',
+        'cover_url':'https://images-na.ssl-images-amazon.com/images/I/914oHftat8L.jpg'
         },
         }
