@@ -1,13 +1,49 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} <style>
+      figure {
+        display: table;
+      }
+    
+      figcaption {
+        display: table-caption;
+        caption-side: top;
+      }
+    
+      img {
+        width: 300px;
+        height: 375px;
+      }
 
-      <h1>{{film["name"]}}'s Profile<h1> <!-- film.name -->
+      .color{ 
+            color:#9E0E40;
+      }
 
-            <h3>Type : {{film["Type"]}}<h3> <!-- fikm.Type -->
-            <h3>Actors : {{film["starring"]}}<h3>     <!-- film.starring -->
-            <h3> Year : {{ film["year"]}}<h3> <!-- film.year -->
-            <h3><a href={{wiki}}> Link to Wikipedia of this movie</a><h3>  <!-- film.url -->
+      body {
+            color:black;
+            background-color: white;
+            background-image:url();
+            background-repeat:no-repeat;
+            background-size:cover;
+      }
+        
 
-
-
-{% endblock %}
+    </style>
+    <figure>
+      <a href="{{url_for('types_page')}}">
+        <img src={{cover}} alt="Cover of the film">
+      </a>
+      <figcaption>
+        <h1 class = "color">{{film["name"]}}'s Profile</h1>
+      </figcaption>
+    </figure>
+    <h3><span style = "color:#9E0E40">Type : </span> {{film["Type"]}}</h3>
+    <h3> <span style = "color:#9E0E40">Actors/Voices :</span> <br>
+    {% for f in film["starring"] %}
+    -{{f}}<br>
+      {% endfor %}
+    </h3>
+    <h3><span style = "color:#9E0E40">Year :</span> {{ film["year"]}}</h3>
+    <h3><span style = "color:#9E0E40">Film Length </span>: {{ film["film_length"]}}</h3>
+    <h3>
+      <a href={{wiki}}> Link to Wikipedia of this movie
+    </h3>
+    <!-- film.url --> {% endblock %}
