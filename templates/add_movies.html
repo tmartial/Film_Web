@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %} 
+<style>
+    
+  </style>
+  <h1>Here you can add movies to the website</h1>
+  <h4><div class="info"> Fill this form to add a movie to the website. After this, you will see your movie in the
+    <a href="http://127.0.0.1:5000/movies"</a> movies' list </a>
+  </div></h4>
+  <form method="post" action="">
+    <div>
+    <label>Name of the movie :</label>
+    <input type="text" name="name_movie" id="add_movie_name" placeholder="Ex: Encanto" required />
+    </div>
+
+    <div>
+    <br><label>Choose a movie type :</label>
+    <select name="type" id="type-select">
+        <option value="">--Please choose the type--</option>
+        <option value="Action">Action</option>
+        <option value="Animated">Animated</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Crime">Crime</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Drama">Drama</option>
+        <option value="Fantastic">Fantastic</option>
+        <option value="Horror">Horror</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Science_fiction">Science fiction</option>
+        <option value="Thriller">Thriller</option>
+    </select>
+    </div>
+
+    <div>
+    <br><label>Wikipedia's url of the movie :</label>
+    <input type="text" name="url_wikipedia_movie" id="add_movie_wikipedia" placeholder="Ex: https://en.wikipedia.org/wiki/Encanto_(film) " required />
+    </div>
+
+    <div>
+        <br><label>Release year :</label>
+        <input type="text" name="year_movie" id="add_movie_year" placeholder="Ex: 2021" required />
+    </div>
+
+    <div>
+        <br><label>Main actor :</label>
+        <input type="text" name="actor_movie" id="add_movie_actor" placeholder="Ex: Stephanie Beatriz" required />
+    </div>
+
+    <div>
+        <br><label>Film Length :</label>
+        <input type="text" name="length_movie" id="add_movie_length" placeholder="Ex: 1h49" required />
+    </div>
+
+    <div>
+        <br><label>Cover url of the movie (jpg or png) :</label>
+        <input type="text" name="cover_movie" id="add_movie_cover" placeholder="Ex: https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg " required />
+    </div>
+
+    <br><input type="submit" value="Add the movie" />
+    </form>
+     {% endblock %}
