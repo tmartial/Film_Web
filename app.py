@@ -141,3 +141,7 @@ print(year_movie2(list(range(1980))))
 before_1980=range(1980)
 years=before_1980
 print(years[0]<2)
+
+@app.route('/add_movies')
+def add_movies_page():
+    return render_template('add_movies.html')
