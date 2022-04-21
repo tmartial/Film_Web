@@ -28,8 +28,6 @@ def movies_profile(name):
             cover=FILMS[k]["cover_url"]
     return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover )
 
-
-
 # Find the different types of movies
 @app.route('/type')
 
@@ -49,8 +47,6 @@ def type_movie(typename):
             a_type.append(FILMS[i+1])
     if request.method=='GET':
         return render_template('type_movies.html', movies=a_type, type=typename)
-
-
 
 # Find the different actors
 @app.route('/actor')
@@ -142,6 +138,30 @@ before_1980=range(1980)
 years=before_1980
 print(years[0]<2)
 
-@app.route('/add_movies')
+@app.route('/bibliography')
+def bibliography():
+    return render_template('bibliography.html')
+
+@app.route('/add_movies', methods=['GET','POST'])
 def add_movies_page():
+    if request.method == 'POST':
+        dict_length = len(FILMS)
+        movie_name = request.form.get("name_movie")
+        movie_type = request.form.get("type")
+        movie_wiki = request.form.get("url_wikipedia_movie")
+        movie_year = request.form.get("year_movie")
+        actors = request.form.get("actor_movie")
+        movie_actor = actors.split(',')
+        movie_length = request.form.get("length_movie")
+        movie_cover = request.form.get("cover_movie")
+        FILMS[dict_length+1] = {'name': movie_name,
+                                'id' : dict_length+1,
+                                'Type': movie_type,
+                                'url':movie_wiki,
+                                'year': movie_year,
+                                'starring': movie_actor,
+                                'film_length' : movie_length,
+                                'cover_url':movie_cover
+        }
+    FILMS.update(FILMS[dict_length+1])
     return render_template('add_movies.html')
