@@ -163,5 +163,4 @@ def add_movies_page():
                                 'film_length' : movie_length,
                                 'cover_url':movie_cover
         }
-    FILMS.update(FILMS[dict_length+1])
     return render_template('add_movies.html')
