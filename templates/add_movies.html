@@ -1,19 +1,36 @@
 {% extends "base.html" %} {% block content %} 
 <style>
-    
+    .infobox {
+  width: available;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 10px 12px;
+  background-color: #67a0d9 
+}
+
+    .formbox {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  border: 1px solid #333;
+  padding: 10px 12px;
+  background-color: #d8efff 
+}
+
   </style>
   <h1>Here you can add movies to the website</h1>
-  <h4><div class="info"> Fill this form to add a movie to the website. After this, you will see your movie in the
+  <h4><div class="infobox"> Fill this form to add a movie to the website. After this, you will see your movie in the
     <a href="http://127.0.0.1:5000/movies"</a> movies' list </a>
+    <br>⚠️ Each information is mandatory
   </div></h4>
-  <form method="post" action="">
-    <div>
+  <form method="post" class="formbox" action="">
+    <div><p align="justify">
     <label>Name of the movie :</label>
     <input type="text" name="name_movie" id="add_movie_name" placeholder="Ex: Encanto" required />
-    </div>
+    </p></div>
 
-    <div>
-    <br><label>Choose a movie type :</label>
+    <div><p align="justify">
+    <label>Choose a movie type :</label>
     <select name="type" id="type-select">
         <option value="">--Please choose the type--</option>
         <option value="Action">Action</option>
@@ -28,32 +45,33 @@
         <option value="Science_fiction">Science fiction</option>
         <option value="Thriller">Thriller</option>
     </select>
-    </div>
+    </p>
 
-    <div>
-    <br><label>Wikipedia's url of the movie :</label>
-    <input type="text" name="url_wikipedia_movie" id="add_movie_wikipedia" placeholder="Ex: https://en.wikipedia.org/wiki/Encanto_(film) " required />
-    </div>
+    <div><p align="justify">
+    <label>Wikipedia's url of the movie :</label>
+    <input type="url" name="url_wikipedia_movie" id="add_movie_wikipedia" placeholder="Ex: https://en.wikipedia.org/wiki/Encanto_(film) " required />
+    </p></div>
 
-    <div>
-        <br><label>Release year :</label>
+    <div><p align="justify">
+        <label>Release year :</label>
         <input type="text" name="year_movie" id="add_movie_year" placeholder="Ex: 2021" required />
-    </div>
+    </p></div>
 
-    <div>
-        <br><label>Main actor :</label>
-        <input type="text" name="actor_movie" id="add_movie_actor" placeholder="Ex: Stephanie Beatriz" required />
-    </div>
+    <div><p align="justify">
+        <label>Main actors</label>
+        <input type="text" name="actor_movie" id="add_movie_actor" placeholder="Ex: Stephanie Beatriz, ..." required />
+        (use comma to seperate them)
+    </p></div>
 
-    <div>
-        <br><label>Film Length :</label>
+    <div><p align="justify">
+        <label>Film Length :</label>
         <input type="text" name="length_movie" id="add_movie_length" placeholder="Ex: 1h49" required />
-    </div>
+    </p></div>
 
-    <div>
-        <br><label>Cover url of the movie (jpg or png) :</label>
-        <input type="text" name="cover_movie" id="add_movie_cover" placeholder="Ex: https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg " required />
-    </div>
+    <div><p align="justify">
+        <label>Cover url of the movie (jpg or png) :</label>
+        <input type="url" name="cover_movie" id="add_movie_cover" placeholder="Ex: https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg " required />
+    </p></div>
 
     <br><input type="submit" value="Add the movie" />
     </form>
