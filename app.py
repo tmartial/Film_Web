@@ -1,8 +1,11 @@
 from flask import Flask
 from flask import request, make_response, render_template,redirect
-from BDD import *
+# from BDD import *
+import json
 
-
+with open('dict.json') as json_file:
+    FILMS = json.load(json_file)
+print(FILMS)
 
 app = Flask(__name__)
 
@@ -15,13 +18,15 @@ def welcome():
 def movies():
     name_list=[]
     for i in range(len(FILMS)):
-        name_list.append(FILMS[i+1]["name"])
+        name_list.append(FILMS[i]["name"])
     app.logger.debug('serving root URL /')
+
+
     return render_template('movies.html',names=name_list)
 
 @app.route('/movies/<name>')
 def movies_profile(name):
-    for k in FILMS:
+    for k in range(len(FILMS)):
         if (FILMS[k]["name"]==name):
             this_film=FILMS[k]
             wiki=FILMS[k]["url"]
@@ -34,7 +39,7 @@ def movies_profile(name):
 def types_page():
     type_list=[]
     for i in range(len(FILMS)):
-        type_list.append(FILMS[i+1]["Type"])
+        type_list.append(FILMS[i]["Type"])
     type_list = {}.fromkeys(type_list).keys()
     return render_template('type.html', types=type_list)
 
@@ -43,8 +48,8 @@ def types_page():
 def type_movie(typename):
     a_type=[] # a list of movies of this type
     for i in range(len(FILMS)):
-        if typename==FILMS[i+1]["Type"]:
-            a_type.append(FILMS[i+1])
+        if typename==FILMS[i]["Type"]:
+            a_type.append(FILMS[i])
     if request.method=='GET':
         return render_template('type_movies.html', movies=a_type, type=typename)
 
@@ -53,7 +58,7 @@ def type_movie(typename):
 def actors_page():
     actor_list=[]
     for i in range(len(FILMS)):
-        for name in FILMS[i+1]["starring"]:
+        for name in FILMS[i]["starring"]:
             actor_list.append(name)
     actor_list = {}.fromkeys(actor_list).keys()
     actor_list = sorted(actor_list)
@@ -64,9 +69,9 @@ def actors_page():
 def actor_movie(actorname):
     an_actor=[] # a list of movies of this actor
     for i in range(len(FILMS)):
-        for name in FILMS[i+1]["starring"]:
+        for name in FILMS[i]["starring"]:
             if actorname==name :
-                an_actor.append(FILMS[i+1])
+                an_actor.append(FILMS[i])
     if request.method=='GET':
         return render_template('actor_movies.html', movies=an_actor, actor=actorname)
 
@@ -98,8 +103,8 @@ def year_movie(years):
     movies_years=[]
 
     for i in range(len(FILMS)):
-        if FILMS[i+1]["year"] in years5:
-            movies_years.append(FILMS[i+1])
+        if FILMS[i]["year"] in years5:
+            movies_years.append(FILMS[i])
 
     if int(years5[0]) < 1980:
         period = "before 1980"
@@ -118,8 +123,8 @@ def year_movie2(years):
     movies_years=[]
     for i in range(len(FILMS)):
         for j in years :
-            if int(FILMS[i+1]["year"]) == j:
-                movies_years.append(FILMS[i+1])
+            if int(FILMS[i]["year"]) == j:
+                movies_years.append(FILMS[i])
     if years[0] < 1980:
         period = "before 1980"
     elif years[0] == 1980:
@@ -151,16 +156,20 @@ def add_movies_page():
         movie_wiki = request.form.get("url_wikipedia_movie")
         movie_year = request.form.get("year_movie")
         actors = request.form.get("actor_movie")
-        movie_actor = actors.split(',')
+        actor = actors.replace(' ','')
+        movie_actor = actor.split(',')
         movie_length = request.form.get("length_movie")
         movie_cover = request.form.get("cover_movie")
-        FILMS[dict_length+1] = {'name': movie_name,
+        new_film = {'name': movie_name,
                                 'id' : dict_length+1,
                                 'Type': movie_type,
                                 'url':movie_wiki,
                                 'year': movie_year,
                                 'starring': movie_actor,
                                 'film_length' : movie_length,
-                                'cover_url':movie_cover
-        }
+                                'cover_url':movie_cover}
+        # Writing a new dict object to a file as append and overwrite the whole file
+        with open("dict.json", mode='w') as f:
+            FILMS.append(new_film)
+            json.dump(FILMS, f)
     return render_template('add_movies.html')
