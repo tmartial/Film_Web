@@ -9,10 +9,15 @@
     height: 50px;
     text-align: center;
 }
+
+.three{
+  font-size:22px;
+}
+
 </style>
 
     <h1>Movies' types :</h1>
     {% for each_type in types %}
-        <li class="two"><a href="{{url_for('type_movie', typename= each_type)}}">{{ each_type }}</a></li>
+        <li class="two"><a href="{{url_for('type_movie', typename= each_type)}}" class="three">{{ each_type }}</a></li>
     {% endfor %}
 {% endblock %}

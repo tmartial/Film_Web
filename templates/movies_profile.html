@@ -1,19 +1,19 @@
 {% extends 'base.html' %} {% block content %} <style>
       figure {
-        display: table;
+          display: table;
       }
-    
+
       figcaption {
         display: table-caption;
         caption-side: top;
       }
-    
+
       img {
         width: 300px;
         height: 375px;
       }
 
-      .color{ 
+      .color{
             color:#9E0E40;
       }
 
@@ -24,12 +24,12 @@
             background-repeat:no-repeat;
             background-size:cover;
       }
-        
+
 
     </style>
     <figure>
       <a href="{{url_for('types_page')}}">
-        <img src={{cover}} alt="Cover of the film">
+        <img src={{cover}} alt="Cover of the film" class="center">
       </a>
       <figcaption>
         <h1 class = "color">{{film["name"]}}'s Profile</h1>
@@ -46,4 +46,5 @@
     <h3>
       <a href={{wiki}}> Link to Wikipedia of this movie
     </h3>
+
     <!-- film.url --> {% endblock %}

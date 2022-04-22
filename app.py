@@ -7,6 +7,8 @@ with open('dict.json') as json_file:
     FILMS = json.load(json_file)
 print(FILMS)
 
+print(type(FILMS[0]["id"]))
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,12 +19,15 @@ def welcome():
 @app.route('/movies')
 def movies():
     name_list=[]
-    for i in range(len(FILMS)):
-        name_list.append(FILMS[i]["name"])
-    app.logger.debug('serving root URL /')
+    cover=[]
+    id=[]
+    for k in range(len(FILMS)):
+        cover.append(FILMS[k]['cover_url'])
+        id.append(FILMS[k]['id']-1)
+        name_list.append(FILMS[k]['name'])
+    return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
 
 
-    return render_template('movies.html',names=name_list)
 
 @app.route('/movies/<name>')
 def movies_profile(name):
@@ -47,11 +52,17 @@ def types_page():
 @app.route('/type/<typename>')
 def type_movie(typename):
     a_type=[] # a list of movies of this type
+    indices=[]
+    covers=[]
+    order=0
     for i in range(len(FILMS)):
         if typename==FILMS[i]["Type"]:
             a_type.append(FILMS[i])
+            covers.append(FILMS[i]["cover_url"])
+            order+=1
+    ordered=range(order)
     if request.method=='GET':
-        return render_template('type_movies.html', movies=a_type, type=typename)
+        return render_template('type_movies.html', movies=a_type, covers=covers,type=typename, ordered=ordered)
 
 # Find the different actors
 @app.route('/actor')
@@ -68,12 +79,17 @@ def actors_page():
 @app.route('/actor/<actorname>')
 def actor_movie(actorname):
     an_actor=[] # a list of movies of this actor
+    covers=[]
+    order=0
     for i in range(len(FILMS)):
         for name in FILMS[i]["starring"]:
             if actorname==name :
                 an_actor.append(FILMS[i])
+                covers.append(FILMS[i]["cover_url"])
+                order+=1
+    ordered=range(order)
     if request.method=='GET':
-        return render_template('actor_movies.html', movies=an_actor, actor=actorname)
+        return render_template('actor_movies.html', movies=an_actor, covers=covers,actor=actorname,ordered=ordered)
 
 
 
@@ -101,10 +117,15 @@ def year_movie(years):
     years5=years4.split(",")
 
     movies_years=[]
+    covers=[]
+    order=0
 
     for i in range(len(FILMS)):
         if FILMS[i]["year"] in years5:
             movies_years.append(FILMS[i])
+            covers.append(FILMS[i]["cover_url"])
+            order+=1
+    ordered=range(order)         
 
     if int(years5[0]) < 1980:
         period = "before 1980"
@@ -117,8 +138,8 @@ def year_movie(years):
     else:
         period = "after 2020"
 
-    return render_template('year_movies.html', movies=movies_years, period=period,years=years5)
-
+    return render_template('year_movies.html', movies=movies_years, period=period,years=years5,covers=covers,ordered=ordered)
+'''
 def year_movie2(years):
     movies_years=[]
     for i in range(len(FILMS)):
@@ -137,11 +158,7 @@ def year_movie2(years):
         period = "after 2000"
 
     return years
-
-print(year_movie2(list(range(1980))))
-before_1980=range(1980)
-years=before_1980
-print(years[0]<2)
+'''
 
 @app.route('/bibliography')
 def bibliography():
