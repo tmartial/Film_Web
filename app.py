@@ -125,7 +125,7 @@ def year_movie(years):
             movies_years.append(FILMS[i])
             covers.append(FILMS[i]["cover_url"])
             order+=1
-    ordered=range(order)         
+    ordered=range(order)
 
     if int(years5[0]) < 1980:
         period = "before 1980"
@@ -190,3 +190,42 @@ def add_movies_page():
             FILMS.append(new_film)
             json.dump(FILMS, f)
     return render_template('add_movies.html')
+
+@app.route('/scores')
+def scores():
+        return render_template('scores.html', zero_to_one=[0,1], one_to_two=[1,2],
+            two_to_three=[2,3], three_to_four=[3,4], four_to_five=[4,5])
+
+# Get movies of certain years
+@app.route('/scores/<scores>')
+def scores_movies(scores):
+
+
+    movies_scores=[]
+    covers=[]
+    order=0
+    print(scores)
+    print(scores[0])
+    print(scores[4])
+    inf=float(scores[1])
+    sup=float(scores[4])
+
+    for i in range(len(FILMS)):
+        if FILMS[i]["score"][0] <= sup and FILMS[i]["score"][0] > inf : #à remplacer par la moyenne
+            movies_scores.append(FILMS[i])
+            covers.append(FILMS[i]["cover_url"])
+            order+=1
+    ordered=range(order)
+
+    '''if int(years5[0]) < 1980:
+        period = "before 1980"
+    elif int(years5[0]) == 1980:
+        period = "between 1980 and 2000"
+    elif int(years5[0]) == 2000:
+        period = "between 2000 and 2010"
+    elif int(years5[0]) == 2010:
+        period = "between 2010 and 2020"
+    else:
+        period = "after 2020"'''
+
+    return render_template('year_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup)

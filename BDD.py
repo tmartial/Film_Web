@@ -21,7 +21,8 @@ FILMS = [{'name':'Encanto',
         'year': '2021',
         'starring': ["Stephanie Beatriz", "Maria Cecilia Botero", "John Leguizamo", "Mauro Castillo"],
         'film_length' : '1h49',
-        'cover_url':'https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg'
+        'cover_url':'https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg',
+        'score': [3.8] # je le mets dans une liste pour pouvoir faire des moyennes de listes qd on append un score
         },
         {'name':'Titanic',
         'id' : 2,
@@ -30,7 +31,8 @@ FILMS = [{'name':'Encanto',
         'year': '1997',
         'starring': ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane", "Kathy Bates", "Frances Fisher"],
         'film_length' : '3h14',
-        'cover_url':'https://filmxposure.files.wordpress.com/2015/08/titanic-cover.jpg'
+        'cover_url':'https://filmxposure.files.wordpress.com/2015/08/titanic-cover.jpg',
+        'score':[4.3]  #aussi c'est le résultat de allo ciné
         },
         {'name':'Turning red',
         'id' : 3,
@@ -39,7 +41,8 @@ FILMS = [{'name':'Encanto',
         'year': '2022',
         'starring': ["Rosalie Chiang", "Sandra Oh", "Ava Morse", "Hyein Park", "Orion Lee"],
         'film_length' : '1h40',
-        'cover_url':'https://mobile-img.lpcdn.ca/v2/924x/d38ad891cab2355483bf025e54322338.jpg'
+        'cover_url':'https://mobile-img.lpcdn.ca/v2/924x/d38ad891cab2355483bf025e54322338.jpg',
+        'score': [3.5]
         },
         {'name':'Avatar',
         'id' : 4,
@@ -48,7 +51,8 @@ FILMS = [{'name':'Encanto',
         'year': '2009',
         'starring': ["Sam Worthington", "Zoe Saldana", "Stephen Lang", "Michelle Rodriguez", "Sigourney Weaver" ],
         'film_length' : '2h42',
-        'cover_url':'https://fr.web.img6.acsta.net/medias/nmedia/18/78/95/70/19485155.jpg'
+        'cover_url':'https://fr.web.img6.acsta.net/medias/nmedia/18/78/95/70/19485155.jpg',
+        'score':[4.3]
         },
         {'name':'Wolf of Wall Street',
         'id' : 5,
@@ -57,9 +61,9 @@ FILMS = [{'name':'Encanto',
         'year': '2013',
         'starring': ["Leonardo DiCaprio", "Jonah Hill", "Margot Robbie", "Matthew McConaughey", "Kyle Chandler"],
         'film_length' : '3h',
-        'cover_url':'https://images-na.ssl-images-amazon.com/images/I/914oHftat8L.jpg'
+        'cover_url':'https://images-na.ssl-images-amazon.com/images/I/914oHftat8L.jpg',
+        'score':[4.2]
         }]
-        
 
 filename = "dict.json"
 # Writing the list of dict objects to a file
