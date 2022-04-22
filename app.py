@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request, make_response, render_template,redirect
-# from BDD import *
+from BDD import *
 import json
 
 with open('dict.json') as json_file:
@@ -200,32 +200,53 @@ def scores():
 @app.route('/scores/<scores>')
 def scores_movies(scores):
 
-
     movies_scores=[]
     covers=[]
     order=0
     print(scores)
     print(scores[0])
     print(scores[4])
+    print("lalala", FILMS[1]['score'])
     inf=float(scores[1])
     sup=float(scores[4])
 
     for i in range(len(FILMS)):
-        if FILMS[i]["score"][0] <= sup and FILMS[i]["score"][0] > inf : #à remplacer par la moyenne
+        if FILMS[i]['score'][0] <= sup and FILMS[i]['score'][0] > inf : #à remplacer par la moyenne
             movies_scores.append(FILMS[i])
             covers.append(FILMS[i]["cover_url"])
             order+=1
     ordered=range(order)
 
-    '''if int(years5[0]) < 1980:
-        period = "before 1980"
-    elif int(years5[0]) == 1980:
-        period = "between 1980 and 2000"
-    elif int(years5[0]) == 2000:
-        period = "between 2000 and 2010"
-    elif int(years5[0]) == 2010:
-        period = "between 2010 and 2020"
-    else:
-        period = "after 2020"'''
+    return render_template('scores_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup)
 
-    return render_template('year_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup)
+#Je ferais la méthode demain
+'''@app.route('/movies/<name>', methods=['GET','POST'])
+def add_note(name):
+    if request.method == 'POST':
+        dict_length = len(FILMS)
+        for i in range(dict_length):
+            if FILMS[i]["name"]==name :
+                id = i
+        movie_score = request.form.get("note")
+        #movie_type = request.form.get("type")
+        #movie_wiki = request.form.get("url_wikipedia_movie")
+        #movie_year = request.form.get("year_movie")
+        #actors = request.form.get("actor_movie")
+        #actor = actors.replace(' ','')
+        #movie_actor = actor.split(',')
+        #movie_length = request.form.get("length_movie")
+        #movie_cover = request.form.get("cover_movie")
+        #new_film = {'name': movie_name,
+                                #'id' : dict_length+1,
+                                #'Type': movie_type,
+                                #'url':movie_wiki,
+                                #'year': movie_year,
+                                #'starring': movie_actor,
+                                #'film_length' : movie_length,
+                                #'cover_url':movie_cover}
+
+        # Writing a new dict object to a file as append and overwrite the whole file
+        with open("dict.json", mode='w') as f:
+            FILMS[id]['score'].append(movie_score)
+            json.dump(FILMS, f)
+    return render_template('movies_profile.html') '''

@@ -25,6 +25,15 @@
             background-size:cover;
       }
 
+      .formbox {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    border: 1px solid #333;
+    padding: 10px 12px;
+    background-color: #d8efff
+  }
+
 
     </style>
     <figure>
@@ -43,8 +52,17 @@
     </h3>
     <h3><span style = "color:#9E0E40">Year :</span> {{ film["year"]}}</h3>
     <h3><span style = "color:#9E0E40">Film Length </span>: {{ film["film_length"]}}</h3>
+    <h3><span style = "color:#9E0E40">Score /5 </span>: {{ film["score"][0]}}</h3>
     <h3>
-      <a href={{wiki}}> Link to Wikipedia of this movie
+      <a href={{wiki}}> Link to Wikipedia of this movie </a>
     </h3>
+
+    <form method="post" class="formbox" action="">
+      <div><p align="justify">
+      <label> Give a score to this movie from 0 to 5 :</label>
+      <input type="text" name="note" id="add_score_to_movie" placeholder="Ex: 4.3" required />
+      </p></div>
+      <br><input type="submit" value="Add the note" />
+      </form>
 
     <!-- film.url --> {% endblock %}
