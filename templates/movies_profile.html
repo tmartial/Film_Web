@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %} <style>
       figure {
           display: table;
+
       }
 
       figcaption {
@@ -19,6 +20,7 @@
 
       body {
             color:black;
+            text-align: center;
             background-color: white;
             background-image:url();
             background-repeat:no-repeat;
@@ -31,20 +33,27 @@
     width: fit-content;
     border: 1px solid #333;
     padding: 10px 12px;
-    background-color: #d8efff
+    background-color: #9E0E40
   }
+      .two{
+        text-align:center;
+      }
 
 
     </style>
-    <div><p align="justify">
+
+    <div class= "two">
     <figure>
       <a href="{{url_for('types_page')}}">
         <img src={{cover}} alt="Cover of the film" class="center">
       </a>
+
       <figcaption>
         <h1 class = "color">{{film["name"]}}'s Profile</h1>
       </figcaption>
-    </figure>
+      </figure>
+      </div>
+
     <h3><span style = "color:#9E0E40">Type : </span> {{film["Type"]}}</h3>
     <h3> <span style = "color:#9E0E40">Actors/Voices :</span> <br>
     {% for f in film["starring"] %}
@@ -57,11 +66,11 @@
     <h3>
       <a href={{wiki}}> Link to Wikipedia of this movie </a>
     </h3>
-    </p></div>
+
 
     <form method="post" class="formbox" action="">
       <div><p align="justify">
-      <label> Give a score to this movie from 0 to 5 :</label>
+      <label> <span style ="color:#FFFFFF"> Give a score to this movie from 0 to 5 </span> :</label>
       <input type="text" name="note" id="add_score_to_movie" placeholder="Ex: 4.3" required />
       </p></div>
       <br>
