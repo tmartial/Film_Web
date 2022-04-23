@@ -65,6 +65,8 @@ FILMS = [{'name':'Encanto',
         'score':[4.2]
         }]
 
+
+
 filename = "dict.json"
 # Writing the list of dict objects to a file
 with open(filename, mode='w') as f:

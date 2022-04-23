@@ -22,7 +22,7 @@ def movies():
     '''
     with open('dict.json') as json_file:
         FILMS = json.load(json_file)
-    '''    
+    '''
     name_list=[]
     cover=[]
     id=[]
@@ -34,14 +34,37 @@ def movies():
 
 
 
-@app.route('/movies/<name>')
+@app.route('/movies/<name>', methods=['GET','POST'])
 def movies_profile(name):
-    for k in range(len(FILMS)):
-        if (FILMS[k]["name"]==name):
-            this_film=FILMS[k]
-            wiki=FILMS[k]["url"]
-            cover=FILMS[k]["cover_url"]
-    return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover )
+    if request.method == 'GET':
+        for k in range(len(FILMS)):
+            if (FILMS[k]["name"]==name):
+                this_film=FILMS[k]
+                wiki=FILMS[k]["url"]
+                cover=FILMS[k]["cover_url"]
+                mean_score=sum(FILMS[k]['score'])/len(FILMS[k]['score'])
+                print(sum(FILMS[k]['score']))
+                print(len(FILMS[k]['score']))
+                print(mean_score)
+        return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover,mean_score=mean_score)
+
+    if request.method == 'POST':
+        dict_length = len(FILMS)
+        for i in range(dict_length):
+            if FILMS[i]["name"]==name :
+                this_film=FILMS[i]
+                wiki=FILMS[i]["url"]
+                cover=FILMS[i]["cover_url"]
+                #mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
+                id = i
+
+        movie_score = request.form.get("note")
+        with open("dict.json", mode='w') as f:
+            FILMS[id]['score'].append(float(movie_score))
+            json.dump(FILMS, f)
+        
+        mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
+    return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover,mean_score=mean_score)
 
 @app.route('/movies/<indice>', methods=['GET','POST'])
 def delete_movie(indice):
@@ -233,7 +256,8 @@ def scores_movies(scores):
     sup=float(scores[4])
 
     for i in range(len(FILMS)):
-        if FILMS[i]['score'][0] <= sup and FILMS[i]['score'][0] > inf : #à remplacer par la moyenne
+        mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
+        if mean_score <= sup and mean_score > inf : #à remplacer par la moyenne
             movies_scores.append(FILMS[i])
             covers.append(FILMS[i]["cover_url"])
             order+=1
