@@ -18,12 +18,17 @@ def welcome():
 
 @app.route('/movies')
 def movies():
+    # use this command after rerunning the BDD.py to get all the 5 movies when test delete
+    '''
+    with open('dict.json') as json_file:
+        FILMS = json.load(json_file)
+    '''    
     name_list=[]
     cover=[]
     id=[]
     for k in range(len(FILMS)):
         cover.append(FILMS[k]['cover_url'])
-        id.append(FILMS[k]['id']-1)
+        id.append(k)
         name_list.append(FILMS[k]['name'])
     return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
 
@@ -37,6 +42,23 @@ def movies_profile(name):
             wiki=FILMS[k]["url"]
             cover=FILMS[k]["cover_url"]
     return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover )
+
+@app.route('/movies/<indice>', methods=['GET','POST'])
+def delete_movie(indice):
+    if request.method == 'POST':
+        with open("dict.json", mode='w') as f:
+            FILMS.pop(int(indice))
+            json.dump(FILMS, f)
+
+        name_list=[]
+        cover=[]
+        id=[]
+        for k in range(len(FILMS)):
+            cover.append(FILMS[k]['cover_url'])
+            id.append(k)
+            name_list.append(FILMS[k]['name'])
+        return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
+
 
 # Find the different types of movies
 @app.route('/type')
