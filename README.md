@@ -7,8 +7,8 @@ To be able to go on the website you have to install a virtual environment.
 For this, you have to copy and paste the following command in you terminal :
 
 # set the environment(mac)
-python3 -m venv .venv
-.venv/bin/pip install FLask
+$ python3 -m venv .venv
+$ .venv/bin/pip install FLask
 FLASK_ENV=development ./.venv/bin/flask
 touch .gitignore
 echo .venv > .gitignore
