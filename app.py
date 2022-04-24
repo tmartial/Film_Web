@@ -16,7 +16,7 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     '''
-    Function allowing to show the page Welcome.html 
+    Function allowing to show the page Welcome.html
 
             Parameters:
                     None
@@ -70,7 +70,7 @@ def searched_page(searched_ids):
         ordered=range(order)
         return render_template('searched_movies.html',names=name_list, movies=films, covers=cover, ids=ordered)
 
-    
+
 
 @app.route('/movies')
 def movies():
@@ -81,12 +81,12 @@ def movies():
                     None
 
             Returns:
-                    Show the page of movies.html in providing to all the parameters with information needed to show in this page : 
+                    Show the page of movies.html in providing to all the parameters with information needed to show in this page :
                     names(list) : names of all the movies
                     movies(list) : list of all the movies(dictionaries)
                     covers(list) : links of cover of every movie
                     ids(list) : list of continuous int from 0 to the number of movies-1
-                    
+
     '''
     # use this command after rerunning the BDD.py to get all the 5 movies when test delete
     '''
@@ -113,12 +113,12 @@ def movies_profile(name):
                     name(string) : the name of a movie
 
             Returns:
-                    Show the page of movies_profile.html in providing to all the parameters with information needed to show in this page : 
-                    film(dict) : dictionary of a movie 
+                    Show the page of movies_profile.html in providing to all the parameters with information needed to show in this page :
+                    film(dict) : dictionary of a movie
                     wiki(string) : link to Wikipedia of this movie
                     cover(string) : link to get this movie's cover
                     mean_score(float) : the mean of all the scores of this movie
-                    
+
     '''
     if request.method == 'GET':
         for k in range(len(FILMS)):
@@ -169,7 +169,7 @@ def delete_movie(indice):
                     movies(list) : list of all the movies
                     covers(list) : links of cover of every movie
                     ids(list) : list of continuous int from 0 to the number of movies-1
-                                      
+
     '''
     if request.method == 'POST':
         with open("dict.json", mode='w') as f:
@@ -186,11 +186,11 @@ def delete_movie(indice):
         return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
 
 
-    
+
 # Find the different types of movies
 @app.route('/type')
 def types_page():
-     '''
+    '''
     Function allowing to show the page of all the types of movies.
 
             Parameters:
@@ -198,12 +198,12 @@ def types_page():
 
             Returns:
                     Show the page of type.html in providing to all the parameters with information needed to show in this page :
-                    types(list) : list of all the existant types of movies                                  
+                    types(list) : list of all the existant types of movies
     '''
     type_list=[]
     for i in range(len(FILMS)):
         type_list.append(FILMS[i]["Type"])
-    type_list = sorted(type_list)    
+    type_list = sorted(type_list)
     type_list = {}.fromkeys(type_list).keys()
     return render_template('type.html', types=type_list)
 
@@ -220,7 +220,7 @@ def type_movie(typename):
             Returns:
                     Show the page type_movies.html in providing to all the parameters with information needed to show in this page :
                     movies(list) : list of movies of this type
-                    covers(list) : list of links(string) to the cover of searched movies 
+                    covers(list) : list of links(string) to the cover of searched movies
                     type(string) : get this type(string) you search
                     ordered(list) : list of continuous int from 0 to the number of searched movies-1
     '''
@@ -237,8 +237,8 @@ def type_movie(typename):
     if request.method=='GET':
         return render_template('type_movies.html', movies=a_type, covers=covers,type=typename, ordered=ordered)
 
-    
-    
+
+
 # Find the different actors
 @app.route('/actor')
 def actors_page():
@@ -273,7 +273,7 @@ def actor_movie(actorname):
             Returns:
                     Show the page actor_movies.html' in providing to all the parameters with information needed to show in this page :
                     movies(list) : list of movies of this actor
-                    covers(list) : list of links(string) to the cover of searched movies 
+                    covers(list) : list of links(string) to the cover of searched movies
                     actor(string) : get this name(string) of actor whose movies you search
                     ordered(list) : list of continuous int from 0 to the number of searched movies-1
     '''
@@ -321,14 +321,14 @@ def year_movie(years):
     Function allowing to show all the movies released in a certain period.
 
             Parameters:
-                    years(list) : list of string with every element of the list of years like before1980, between1980_2000 above. Because the list will be turned to string when this function is called by url_for in year.html. 
+                    years(list) : list of string with every element of the list of years like before1980, between1980_2000 above. Because the list will be turned to string when this function is called by url_for in year.html.
 
             Returns:
                     Show the page year_movies.html in providing to all the parameters with information needed to show in this page :
                     movies(list) : list of movies released in this period
                     period(string) : get the string to print the release period of movies which you search
                     years(list) : list of years when the searched movies were released
-                    covers(list) : list of links(string) to the cover of searched movies 
+                    covers(list) : list of links(string) to the cover of searched movies
                     ordered(list) : list of continuous int from 0 to the number of searched movies-1
     '''
 
@@ -368,15 +368,15 @@ def year_movie(years):
 def bibliography():
     '''
 	Function allowing to show the page bibliography.html
-        
-                Parameters : 
-                            None 
-		        Returns : 
+
+                Parameters :
+                            None
+		        Returns :
                         Show the page bibliography.html in providing to all the parameters with information needed to show in this page :
-                        names(list) : list containing the names of all the movies. 
-                        movies(list): list containing the json file’s list. 
+                        names(list) : list containing the names of all the movies.
+                        movies(list): list containing the json file’s list.
                         covers(list) : list containing the covers of all the movies.
-                        ids(list) : list containing the keys of all the movies. 
+                        ids(list) : list containing the keys of all the movies.
 
     '''
     name_list=[]
@@ -393,13 +393,13 @@ def bibliography():
 def add_movies_page():
     '''
 	Function allowing to add a movie to the site by filling in some mandatory information. The user needs to fill in the name of the movie, its release year, its length, its wikipedia url, its type, its cover, some of its actors and add a note to this movie.
-    
+
 	            Parameters :
-                            None 
-                
-	            Returns : 
-                        Show the page add_movies.html with all the cases to fill blank. 
-                        The new movie is added in the json file. 
+                            None
+
+	            Returns :
+                        Show the page add_movies.html with all the cases to fill blank.
+                        The new movie is added in the json file.
     '''
 
     if request.method == 'POST':
@@ -436,12 +436,12 @@ def add_movies_page():
 @app.route('/scores')
 def scores():
     '''
-	Function allowing to show the page scores.html 
-    
-	            Parameters : 
-                            None 
-                
-	            Returns : 
+	Function allowing to show the page scores.html
+
+	            Parameters :
+                            None
+
+	            Returns :
                         Show the page scores.html with a button referring to movies’ classification, in providing to all the parameters with information needed to show in this page :
                         zero_to_one(list): list containing the lower and higher score accepted to be selected in the list returning the scores in between zero and one.
                         one_to_two(list) : list containing the lower and higher score accepted to be selected in the list returning the scores in between 1 and two.
@@ -457,21 +457,21 @@ def scores():
 @app.route('/scores/<scores>')
 def scores_movies(scores):
     '''
-    Function allowing to show a list of movies which have a  score's mean within a certain range.The range is set according to the button chosen by the user. 
-    
-                Parameters : 
-                           scores(list): list of the lower and higher score accepted to be selected for each button. 
-                           
-                Returns : 
-                        Show the page no_scores_movies.html if the list is empty. 
-                        Show the page scores_movies.html with the list of selected movies within the wanted range if there is at least one movie in the list : 
+    Function allowing to show a list of movies which have a  score's mean within a certain range.The range is set according to the button chosen by the user.
+
+                Parameters :
+                           scores(list): list of the lower and higher score accepted to be selected for each button.
+
+                Returns :
+                        Show the page no_scores_movies.html if the list is empty.
+                        Show the page scores_movies.html with the list of selected movies within the wanted range if there is at least one movie in the list :
                         movies(list) : list containing all the films having a score within the wanted range.
-                        covers(list) : list containing the covers of all the films within the wanted range. 
-                        ordered(list) : list of continuous int from 0 to the number of searched movies-1. 
-                        inf(float): value representing the lower score which is not included in the wanted values. 
+                        covers(list) : list containing the covers of all the films within the wanted range.
+                        ordered(list) : list of continuous int from 0 to the number of searched movies-1.
+                        inf(float): value representing the lower score which is not included in the wanted values.
                         sup(float): value representing the highest score accepted which is included in the wanted values.
-                        mean(list): list of the movies’ mean score which are the values used for classifying the movies in the different categories. 
-    ''' 
+                        mean(list): list of the movies’ mean score which are the values used for classifying the movies in the different categories.
+    '''
 
     movies_scores=[]
     covers=[]
@@ -499,23 +499,23 @@ def scores_movies(scores):
     else :
         return render_template('scores_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup,mean=mean_scores)
 
-    
-    
+
+
 def search(request):
     '''
-    Function allowing to search movies with informations corresponding to the searching word. 
+    Function allowing to search movies with informations corresponding to the searching word.
     This function permits us to search movies and get a list of indices of searched movies. It will be used for the function searched_page() which can show the searched movies in a page.
     Movies can be found by comparing the searching word with their informations. We can search movies according to the name, the type, the release year or the actors.
 
             Parameters:
-                    request(an object of flask) : request can give us the string of the searching word 
+                    request(an object of flask) : request can give us the string of the searching word
 
             Returns:
                     Use redirect function of flask to go to another function searched_page() in providing the parameter searched_ids.
     '''
     app.logger.debug(request.args)
     #abort(make_response('Not implemented yet ;)', 501))
-    searchword = request.args.get('pattern', '') # ici key est 'pattern' 
+    searchword = request.args.get('pattern', '') # ici key est 'pattern'
     name_list=[]
     year_list=[]
     actor_list=[]
