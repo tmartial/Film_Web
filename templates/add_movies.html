@@ -1,11 +1,11 @@
-{% extends "base.html" %} {% block content %} 
+{% extends "base.html" %} {% block content %}
 <style>
     .infobox {
   width: available;
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
   padding: 10px 12px;
-  background-color: #67a0d9 
+  background-color: #67a0d9
 }
 
     .formbox {
@@ -14,7 +14,7 @@
   width: fit-content;
   border: 1px solid #333;
   padding: 10px 12px;
-  background-color: #d8efff 
+  background-color: #d8efff
 }
 
   </style>
@@ -54,7 +54,7 @@
 
     <div><p align="justify">
         <label>Release year :</label>
-        <input type="text" name="year_movie" id="add_movie_year" placeholder="Ex: 2021" required />
+        <input type="number" min="0" name="year_movie" id="add_movie_year" placeholder="Ex: 2021" required />
     </p></div>
 
     <div><p align="justify">
@@ -71,6 +71,11 @@
     <div><p align="justify">
         <label>Cover url of the movie (jpg or png) :</label>
         <input type="url" name="cover_movie" id="add_movie_cover" placeholder="Ex: https://m.media-amazon.com/images/I/61mP-+-eH2L.jpg " required />
+    </p></div>
+
+    <div><p align="justify">
+        <label>Score you give to this movie :</label>
+        <input size="20" type="number" min="0" max="5" step="0.1" name="note" id="add_score_to_movie" placeholder="Ex: 4.3" required />
     </p></div>
 
     <br><input type="submit" value="Add the movie" />

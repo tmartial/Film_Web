@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<h1>Movies which have been rated from {{inf}} to {{sup}} :</h1> 
+<h1>Movies which have been rated from {{inf}} to {{sup}} :</h1>
 
 {% for n in ordered %}
     <li><a href="{{url_for('movies_profile',name=movies[n]["name"])}}" >{{movies[n]["name"]}} </a>
@@ -11,6 +10,7 @@
                <img src={{covers[n]}} alt="Cover of the film" height="300" width="230">
              </a>
          </figure>
+         <a>Score : {{mean[n]}} </a>
     </li>
 {% endfor %}
 
