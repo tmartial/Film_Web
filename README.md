@@ -1,5 +1,5 @@
 # Website description "My Cinema"
-Our website allow you to keep informations about the movies that you watch and to score them. 
+Our website allows you to keep informations about the movies that you watch and to score them. 
 You can add movies with many informations like the release year, the wikipedia website, a score, the actors...
 
 # Installation
