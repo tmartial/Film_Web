@@ -155,8 +155,8 @@ def movies_profile(name):
 
 
 
-@app.route('/movies/<indice>', methods=['GET','POST'])
-def delete_movie(indice):
+#@app.route('/movies/<indice>', methods=['GET','POST'])
+#def delete_movie(indice):
     '''
     Function allowing to show the page of all the movies after deleting a certain movie.
 
@@ -171,19 +171,19 @@ def delete_movie(indice):
                     ids(list) : list of continuous int from 0 to the number of movies-1
 
     '''
-    if request.method == 'POST':
-        with open("dict.json", mode='w') as f:
-            FILMS.pop(int(indice))
-            json.dump(FILMS, f)
+    #if request.method == 'POST':
+        #with open("dict.json", mode='w') as f:
+            #FILMS.pop(int(indice))
+            #json.dump(FILMS, f)
 
-        name_list=[]
-        cover=[]
-        id=[]
-        for k in range(len(FILMS)):
-            cover.append(FILMS[k]['cover_url'])
-            id.append(k)
-            name_list.append(FILMS[k]['name'])
-        return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
+        #name_list=[]
+        #cover=[]
+        #id=[]
+        #for k in range(len(FILMS)):
+        #    cover.append(FILMS[k]['cover_url'])
+        #    id.append(k)
+        #    name_list.append(FILMS[k]['name'])
+        #return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id) 
 
 
 
