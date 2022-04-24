@@ -51,8 +51,8 @@
                 </p>
             </div>
             <div class="delete">
-                <form action="{{url_for('delete_movie',indice=n)}}" method="post" style="">
-                    <input type="submit" value="Delete this movie" style="margin-right: 10px" onClick="var toDelete = (confirm('Are you sure to remove this movie from the list of your favorite movies?')); return toDelete ">>
+                <form action="{{url_for('delete_movie',indice=n)}}" method="post">
+                    <input type="submit" value="Delete this movie" style="margin-right: 10px" onClick="var toDelete = (confirm('Are you sure to remove this movie from the list of your favorite movies?')); return toDelete ">
                 </form>
             </div>
         </figure>

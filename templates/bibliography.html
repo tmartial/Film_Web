@@ -1,4 +1,55 @@
-{% extends "base.html" %} 
-{% block content %} 
-TEST
-     {% endblock %}
+{% extends "base.html" %}
+{% block content %}
+<style>
+
+  .two{
+      list-style: none;
+      display: inline-block;
+      width: 100%;
+      height: 400px;
+      text-align: left;
+  }
+
+  .three{
+    font-size:22px;
+           }
+
+   .photo{
+    float:left;
+    width:18%;
+      }
+
+    .intro{
+        float:right;
+        width:70%;
+    }
+
+    .delete{
+        float:right;
+        width:70%;
+    }
+</style>
+
+
+<h1>Bibliography</h1>
+            <div>
+                <h3>Wikipedia link of the movies</h3>
+                {% for n in ids %}
+                <p>Wikipedia, {{movies[n]["name"]}} [en ligne], disponible sur: <a  href="{{movies[n]["url"]}}">{{movies[n]["url"]}}</a></p>
+                {% endfor %}
+                <h3>Cover images of the movies</h3>
+                {% for n in ids %}
+                <p>{{movies[n]["name"]}} : <a  href="{{movies[n]["cover_url"]}}">{{movies[n]["cover_url"]}}</a></p>  </p>
+                {% endfor %}
+                <h3>Images used for the design of the website</h3>
+                <p><a href = "https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg">https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg</a></p>
+                <p><a href = "https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg">https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg</a></p>
+                <p><a href = "https://www.presse-citron.net/app/uploads/2019/09/oscars-2020-films-franc%CC%A7ais.jpg">https://www.presse-citron.net/app/uploads/2019/09/oscars-2020-films-franc%CC%A7ais.jpg</a></p>
+                <p><a href = "http://www.adsecurite.fr/wp-content/uploads/2017/01/2017.jpg">http://www.adsecurite.fr/wp-content/uploads/2017/01/2017.jpg</a></p>
+                <p><a href = "https://us.123rf.com/450wm/iserg/iserg1910/iserg191000046/131302368-%C3%A9toile-sur-fond-blanc-illustration-3d-isol%C3%A9e.jpg?ver=6">https://us.123rf.com/450wm/iserg/iserg1910/iserg191000046/131302368-%C3%A9toile-sur-fond-blanc-illustration-3d-isol%C3%A9e.jpg?ver=6</a></p>
+                <p><a href = "https://cdn-icons-png.flaticon.com/512/2089/2089588.png">https://cdn-icons-png.flaticon.com/512/2089/2089588.png</a></p>
+            </div>
+
+            <h3>Scores</h3>
+            The initial movies' scores were taken on the website allociné : https://www.allocine.fr/
+{% endblock %}

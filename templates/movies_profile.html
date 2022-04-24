@@ -42,7 +42,7 @@
 
     </style>
 
-    <div class= "two">
+<div align="center">
     <figure>
       <a href="{{url_for('types_page')}}">
         <img src={{cover}} alt="Cover of the film" class="center">
@@ -52,7 +52,7 @@
         <h1 class = "color">{{film["name"]}}'s Profile</h1>
       </figcaption>
       </figure>
-      </div>
+
 
     <h3><span style = "color:#9E0E40">Type : </span> {{film["Type"]}}</h3>
     <h3> <span style = "color:#9E0E40">Actors/Voices :</span> <br>
@@ -71,12 +71,12 @@
     <form method="post" class="formbox" action="">
       <div><p align="justify">
       <label> <span style ="color:#FFFFFF"> Give a score to this movie from 0 to 5 </span> :</label>
-      <input type="text" name="note" id="add_score_to_movie" placeholder="Ex: 4.3" required />
+      <input size="20" type="number" min="0" max="5" step="0.1" name="note" id="add_score_to_movie" placeholder="Ex: 4.3" required />
       </p></div>
       <br>
         <input type="submit" value="Add the note" />
 
     <!--  <br><a href="{{url_for('movies_profile',name=film["name"])}}" > Refresh <!--<input type="submit" value="Add the note" />  -->
       </form>
-
+ </div>
     <!-- film.url --> {% endblock %}
