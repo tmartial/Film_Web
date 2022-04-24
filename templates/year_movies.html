@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h1>Movies released {{period}} :</h1>
+<h1><span style="color:#9E0E40"> <u> Movies released {{period}} :  </u> </span> </h1>
 
 {% for n in ordered %}
     <li><a href="{{url_for('movies_profile',name=movies[n]["name"])}}" >{{movies[n]["name"]}} </a>
