@@ -19,3 +19,7 @@ For this, you have to copy and paste the following command in you terminal :
 
 # address of our Web
 http://127.0.0.1:5000
+
+# general information 
+We tried to add a delete function but there was a conflict with the POST request method of the function movies_profile in app.py. Therefore, we decided to 
+delete it in order to be able to give some new score. We keep in mind that the delete function would be an improvement of the website in the future. 
