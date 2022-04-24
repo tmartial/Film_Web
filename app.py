@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request, make_response, render_template,redirect,url_for
-from BDD import *
+#from BDD import *
 import json
 from itertools import chain
 import string
@@ -77,6 +77,7 @@ def movies_profile(name):
                 wiki=FILMS[k]["url"]
                 cover=FILMS[k]["cover_url"]
                 mean_score=sum(FILMS[k]['score'])/len(FILMS[k]['score'])
+                mean_score=round(mean_score,2)
                 print(sum(FILMS[k]['score']))
                 print(len(FILMS[k]['score']))
                 print(mean_score)
@@ -96,8 +97,10 @@ def movies_profile(name):
         with open("dict.json", mode='w') as f:
             FILMS[id]['score'].append(float(movie_score))
             json.dump(FILMS, f)
-
-        mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
+        for i in range(dict_length):
+            if FILMS[i]["name"]==name :
+                mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
+                mean_score=round(mean_score,2)
     return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover,mean_score=mean_score)
 
 @app.route('/movies/<indice>', methods=['GET','POST'])
@@ -241,7 +244,20 @@ def year_movie2(years):
 
 @app.route('/bibliography')
 def bibliography():
-    return render_template('bibliography.html')
+    # use this command after rerunning the BDD.py to get all the 5 movies when test delete
+    '''
+    with open('dict.json') as json_file:
+        FILMS = json.load(json_file)
+    '''
+    name_list=[]
+    cover=[]
+    id=[]
+    for k in range(len(FILMS)):
+        cover.append(FILMS[k]['cover_url'])
+        id.append(k)
+        name_list.append(FILMS[k]['name'])
+    return render_template('bibliography.html',names=name_list, movies=FILMS, covers=cover, ids=id)
+
 
 @app.route('/add_movies', methods=['GET','POST'])
 def add_movies_page():
@@ -256,6 +272,9 @@ def add_movies_page():
         movie_actor = actor.split(',')
         movie_length = request.form.get("length_movie")
         movie_cover = request.form.get("cover_movie")
+        movie_score=[]
+        movie_score.append(float(request.form.get("note")))
+
         new_film = {'name': movie_name,
                                 'id' : dict_length+1,
                                 'Type': movie_type,
@@ -263,7 +282,8 @@ def add_movies_page():
                                 'year': movie_year,
                                 'starring': movie_actor,
                                 'film_length' : movie_length,
-                                'cover_url':movie_cover}
+                                'cover_url':movie_cover,
+                                'score':movie_score}
         # Writing a new dict object to a file as append and overwrite the whole file
         with open("dict.json", mode='w') as f:
             FILMS.append(new_film)
@@ -281,6 +301,7 @@ def scores_movies(scores):
 
     movies_scores=[]
     covers=[]
+    mean_scores=[]
     order=0
     print(scores)
     print(scores[0])
@@ -294,10 +315,15 @@ def scores_movies(scores):
         if mean_score <= sup and mean_score > inf : #à remplacer par la moyenne
             movies_scores.append(FILMS[i])
             covers.append(FILMS[i]["cover_url"])
+            mean_score=round(mean_score,2)
+            mean_scores.append(mean_score)
             order+=1
     ordered=range(order)
 
-    return render_template('scores_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup)
+    if len(movies_scores) == 0 :
+        return render_template('no_movies_score.html')
+    else :
+        return render_template('scores_movies.html', movies=movies_scores ,covers=covers,ordered=ordered,inf=inf,sup=sup,mean=mean_scores)
 
 #Je ferais la méthode demain
 '''@app.route('/movies/<name>', methods=['GET','POST'])
