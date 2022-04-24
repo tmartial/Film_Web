@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{# Have a look at base.html as well to understand how templating works ;)  #}
+
+{% block content %}
+
+<style>
+.infobox {
+  width: available;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 10px 12px;
+  background-color: #67a0d9
+}
+
+.round_icon{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 5px solid white;
+}
+
+li{
+  list-style: none;
+  display: inline-table;
+  height: 50px;
+}
+
+.two{
+  text-align: center;
+}
+
+body {
+  color:black;
+  background-color: white;
+  background-image:url(https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+</style>
+<h1 align="center">My Cinema</h1>
+
+<form class="" method="get" action="{{ url_for('welcome') }}">
+  <input class="" placeholder="movie, type, actor, year.." type="text" name="pattern">
+  <button class="" type="submit">Search</button>
+</form>
+
+<div class="infobox"><h3>
+<p align = "center" >Hello!<br> Welcome to our website with all of our favorite movies inside. You can find all the informations of every film here!</p>
+</h3></div>
+
+<h2 align="center">Search the movies according to : <br> (click on the images) <h2>
+
+<div align="center">
+  <ul>
+    <li>
+      <figure>
+        <a href="{{url_for('types_page')}}">
+          <img src="https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> Types </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="{{url_for('actors_page')}}">
+          <img src="https://www.presse-citron.net/app/uploads/2019/09/oscars-2020-films-franc%CC%A7ais.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> Actors </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="{{url_for('years_page')}}">
+          <img src="http://www.adsecurite.fr/wp-content/uploads/2017/01/2017.jpg" class="round_icon" alt="">
+        </a>
+        <figcaption> Release Year </figcaption>
+      </figure>
+    </li>
+  </ul>
+  <ul class="two">
+    <li>
+      <figure>
+        <a href="{{url_for('scores')}}">
+          <img src="https://us.123rf.com/450wm/iserg/iserg1910/iserg191000046/131302368-%C3%A9toile-sur-fond-blanc-illustration-3d-isol%C3%A9e.jpg?ver=6" class="round_icon" alt="">
+        </a>
+        <figcaption> Scores </figcaption>
+      </figure>
+    </li>
+    <li>
+      <figure>
+        <a href="{{url_for('add_movies_page')}}">
+          <img src="https://cdn-icons-png.flaticon.com/512/2089/2089588.png" class="round_icon" alt="">
+        </a>
+        <figcaption> Add a Movie </figcaption>
+      </figure>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+{% endblock %}
