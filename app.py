@@ -183,7 +183,7 @@ def movies_profile(name):
         #    cover.append(FILMS[k]['cover_url'])
         #    id.append(k)
         #    name_list.append(FILMS[k]['name'])
-        #return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id) 
+        #return render_template('movies.html',names=name_list, movies=FILMS, covers=cover, ids=id)
 
 
 
@@ -324,7 +324,8 @@ def year_movie(years):
                     years(list) : list of string with every element of the list of years like before1980, between1980_2000 above. Because the list will be turned to string when this function is called by url_for in year.html.
 
             Returns:
-                    Show the page year_movies.html in providing to all the parameters with information needed to show in this page :
+                    Show the page no_movies_years.html if there's no movies found in this period.
+                    Show the page year_movies.html if there are any movies found in this period, in providing to all the parameters with information needed to show in this page :
                     movies(list) : list of movies released in this period
                     period(string) : get the string to print the release period of movies which you search
                     years(list) : list of years when the searched movies were released
@@ -360,7 +361,12 @@ def year_movie(years):
     else:
         period = "after 2020"
 
-    return render_template('year_movies.html', movies=movies_years, period=period,years=years5,covers=covers,ordered=ordered)
+    if len(movies_years) == 0 :
+        return  render_template('no_movies_years.html', period=period)
+    else :
+        return render_template('year_movies.html', movies=movies_years, period=period,years=years5,covers=covers,ordered=ordered)
+
+
 
 
 
