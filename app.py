@@ -127,6 +127,7 @@ def types_page():
     type_list=[]
     for i in range(len(FILMS)):
         type_list.append(FILMS[i]["Type"])
+    type_list = sorted(type_list)    
     type_list = {}.fromkeys(type_list).keys()
     return render_template('type.html', types=type_list)
 
