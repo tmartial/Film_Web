@@ -1,7 +1,10 @@
 from flask import Flask
-from flask import request, make_response, render_template,redirect
+from flask import request, make_response, render_template,redirect,url_for
 from BDD import *
 import json
+from itertools import chain
+import string
+
 
 with open('dict.json') as json_file:
     FILMS = json.load(json_file)
@@ -14,7 +17,38 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     app.logger.debug('serving root URL /')
+    if request.args:
+        return search(request)
     return render_template('Welcome.html')
+
+@app.route("/<searched_ids>")
+def searched_page(searched_ids):
+    str=''
+    ids=str.join(searched_ids)
+    ids2=ids.replace(' ','')
+    ids3=ids2[1:-1]
+    ids4=ids3.split(",")
+
+    if ids4[0]=='':
+        return render_template('no_search_result.html')
+
+    else :
+        name_list=[]
+        cover=[]
+        films=[]
+        order=0
+        for k in ids4:
+            cover.append(FILMS[int(k)]['cover_url'])
+            name_list.append(FILMS[int(k)]['name'])
+            films.append(FILMS[int(k)])
+            order+=1
+        ordered=range(order)
+        return render_template('searched_movies.html',names=name_list, movies=films, covers=cover, ids=ordered, ids4=ids4)
+
+@app.route("/<search_word>")
+def searched_none(search_word):
+    return render_template('no_search_result.html',searching_word=search_word)
+
 
 @app.route('/movies')
 def movies():
@@ -62,7 +96,7 @@ def movies_profile(name):
         with open("dict.json", mode='w') as f:
             FILMS[id]['score'].append(float(movie_score))
             json.dump(FILMS, f)
-        
+
         mean_score=sum(FILMS[i]['score'])/len(FILMS[i]['score'])
     return render_template('movies_profile.html',film=this_film,wiki=wiki,cover=cover,mean_score=mean_score)
 
@@ -296,3 +330,32 @@ def add_note(name):
             FILMS[id]['score'].append(movie_score)
             json.dump(FILMS, f)
     return render_template('movies_profile.html') '''
+
+def search(request):
+    app.logger.debug(request.args)
+    #abort(make_response('Not implemented yet ;)', 501))
+    searchword = request.args.get('pattern', '') # ici key est 'pattern'
+    name_list=[]
+    year_list=[]
+    actor_list=[]
+    type_list=[]
+    for k in range(len(FILMS)):
+        year_list.append(FILMS[k]['year'])
+        actor_list.append(FILMS[k]['starring'])
+        name_list.append(FILMS[k]['name'])
+        type_list.append(FILMS[k]['Type'])
+    actors_list = list(chain(actor_list))
+
+    searched_movies=[]
+    for i in range(len(FILMS)):
+        if searchword in name_list[i] or searchword in name_list[i].lower() or searchword in name_list[i].upper():
+            searched_movies.append(i)
+        if searchword==type_list[i] or searchword==type_list[i].lower() or searchword==type_list[i].upper():
+            searched_movies.append(i)
+        if searchword==year_list[i]:
+            searched_movies.append(i)
+        for j in actor_list[i]:
+            if searchword in j or searchword in j.lower() or searchword in j.upper():
+                searched_movies.append(i)
+
+    return redirect(url_for('searched_page', searched_ids= searched_movies))

@@ -43,6 +43,11 @@ body {
 </style>
 <h1 align="center">My Cinema</h1>
 
+<form class="" method="get" action="{{ url_for('welcome') }}">
+  <input class="" placeholder="movie, type, actor, year.." type="text" name="pattern">
+  <button class="" type="submit">Search</button>
+</form>
+
 <div class="infobox"><h3>
 <p align = "center" >Hello!<br> Welcome to our website with all of our favorite movies inside. You can find all the informations of every film here!</p>
 </h3></div>
