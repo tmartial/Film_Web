@@ -22,7 +22,7 @@
             color:black;
             text-align: center;
             background-color: white;
-            background-image:url();
+            background-image:url(https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg);
             background-repeat:no-repeat;
             background-size:cover;
       }
@@ -39,9 +39,20 @@
         text-align:center;
       }
 
+      .background{
+        background-color: #D0DEE9;
+        width: 600px;
+        height:1000px;
+        margin-left: 400px;
+        text-align:center;
+      }
+
 
     </style>
 
+<hr>
+<div class="background">
+  <br>
 <div align="center">
     <figure>
       <a href="{{url_for('types_page')}}">
@@ -49,7 +60,7 @@
       </a>
 
       <figcaption>
-        <h1 class = "color">{{film["name"]}}'s Profile</h1>
+        <h1 class = "color"><u>{{film["name"]}}'s Profile</u></h1>
       </figcaption>
       </figure>
 
@@ -78,5 +89,6 @@
 
     <!--  <br><a href="{{url_for('movies_profile',name=film["name"])}}" > Refresh <!--<input type="submit" value="Add the note" />  -->
       </form>
+ </div>
  </div>
     <!-- film.url --> {% endblock %}
