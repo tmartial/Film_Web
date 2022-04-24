@@ -31,17 +31,18 @@
 </style>
 
 
-<h1>Bibliography</h1>
+
+<h1><span style="color:#9E0E40"> <u> Bibliography:</u> </span></h1>
             <div>
-                <h3>Wikipedia link of the movies</h3>
+                <h3>  <span style = "color:#9E0E40"> <u> Wikipedia link of the movies : </u> </span> </h3>
                 {% for n in ids %}
                 <p>Wikipedia, {{movies[n]["name"]}} [online], available on: <a  href="{{movies[n]["url"]}}">{{movies[n]["url"]}}</a></p>
                 {% endfor %}
-                <h3>Cover images of the movies</h3>
+                <h3><span style="color:#9E0E40" > <u>Cover images of the movies </u> </span> </h3>
                 {% for n in ids %}
                 <p>{{movies[n]["name"]}} : <a  href="{{movies[n]["cover_url"]}}">{{movies[n]["cover_url"]}}</a></p>  </p>
                 {% endfor %}
-                <h3>Images used for the design of the website</h3>
+                <h3><span style = "color:#9E0E40" > <u> Images used for the design of the website> </u> </span> </h3>
                 <p><a href = "https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg">https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg</a></p>
                 <p><a href = "https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg">https://cursus.univ-rennes2.fr/pluginfile.php/1312024/course/overviewfiles/Movie%20genres.jpg</a></p>
                 <p><a href = "https://www.presse-citron.net/app/uploads/2019/09/oscars-2020-films-franc%CC%A7ais.jpg">https://www.presse-citron.net/app/uploads/2019/09/oscars-2020-films-franc%CC%A7ais.jpg</a></p>
@@ -50,6 +51,6 @@
                 <p><a href = "https://cdn-icons-png.flaticon.com/512/2089/2089588.png">https://cdn-icons-png.flaticon.com/512/2089/2089588.png</a></p>
             </div>
 
-            <h3>Scores</h3>
-            The initial movies' scores were taken on the website allociné : <a href = "https://www.allocine.fr/">https://www.allocine.fr/</a></p> 
+            <h3><span style="color:#9E0E40"> <u>Scores </u></span> </h3>
+            The initial movies' scores were taken on the website allociné : <a href = "https://www.allocine.fr/">https://www.allocine.fr/</a></p>
 {% endblock %}

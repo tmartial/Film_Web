@@ -9,9 +9,30 @@
     height: 50px;
     text-align: center;
 }
+
+.background{
+  background-color: #D0DEE9;
+  width: 450px;
+  height:900px;
+  margin-left: 500px;
+  text-align:center;
+}
+
+body {
+  color:black;
+  background-color: white;
+  background-image:url(https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
 </style>
+    <hr>
+    <div class="background">
+    <br>
 
     <h1>Years of publication :</h1>
+    <br>
 
     <li class="two"><a href="{{url_for('year_movie', years=before1980)}}">Before 1980</a></li>
 
@@ -22,5 +43,7 @@
     <li class="two"><a href="{{url_for('year_movie', years=between2010_2020)}}">2010 ~ 2020</a></li>
 
     <li class="two"><a href="{{url_for('year_movie', years=after_2020)}}">After 2020</a></li>
+
+    </div>
 
 {% endblock %}

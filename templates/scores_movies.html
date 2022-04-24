@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Movies which have been rated from {{inf}} to {{sup}} :</h1>
+<h1><span> <u> Movies which have been rated from {{inf}} to {{sup}} : </u> </span> </h1>
 
 {% for n in ordered %}
     <li><a href="{{url_for('movies_profile',name=movies[n]["name"])}}" >{{movies[n]["name"]}} </a>

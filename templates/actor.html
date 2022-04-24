@@ -9,10 +9,31 @@
     height: 50px;
     text-align: center;
 }
-</style>
 
+.background{
+  background-color: #D0DEE9;
+  width: 450px;
+  height:2500px;
+  margin-left: 500px;
+  text-align:center;
+}
+
+body {
+  color:black;
+  background-color: white;
+  background-image:url(https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+</style>
+ <hr>
+  <div class ="background">
+    <br>
     <h1>Actors :</h1>
+    <br>
     {% for each_actor in actors %}
         <li class="two"><a href="{{url_for('actor_movie', actorname = each_actor)}}">{{ each_actor }}</a></li>
     {% endfor %}
+  </div>
 {% endblock %}

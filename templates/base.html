@@ -7,6 +7,17 @@ li {
   height: 50px;
   text-align: center;
 }
+
+.background{
+  background-color: #D0DEE9;
+}
+
+.navItem{
+  background-color: #B3D7ED;
+  background-size: cover;
+  width:33.33%;
+}
+
 </style>
 <html>
   <head>
@@ -21,7 +32,6 @@ li {
       <li class="navItem"><a href="{{ url_for('movies') }}">Movies</a></li>
       <li class="navItem"><a href="{{ url_for('bibliography') }}">Bibliography</a></li>
     </ul>
-
 
 {% block content %}{% endblock %}
 

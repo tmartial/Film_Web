@@ -14,10 +14,30 @@
   font-size:22px;
 }
 
-</style>
+.background{
+  background-color: #D0DEE9;
+  width: 450px;
+  height:900px;
+  margin-left: 500px;
+  text-align:center;
+}
 
+body {
+  color:black;
+  background-color: white;
+  background-image:url(https://st3.depositphotos.com/12006318/15165/i/450/depositphotos_151658570-stock-photo-product-showscase-spotlight-on-black.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+</style>
+    <hr>
+    <div class="background">
+    <br>
     <h1>Movies' types :</h1>
+    <br>
     {% for each_type in types %}
         <li class="two"><a href="{{url_for('type_movie', typename= each_type)}}" class="three">{{ each_type }}</a></li>
     {% endfor %}
+    </div>
 {% endblock %}

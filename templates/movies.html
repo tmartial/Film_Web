@@ -32,9 +32,9 @@
 </style>
 
 
-<h1>Movies</h1>
+<h1><span style="color:#9E0E40"=> <u> Movies: </u> </span> </h1>
 
-<h2>Our favorite movies</h2>
+<h2><span style="color:#9E0E40"=> <u> Our favorite movies: </u> </span></h2>
 
 {% for n in ids %}
      <li class="two"><a href="{{url_for('movies_profile',name=movies[n]["name"])}}" class="three">{{movies[n]["name"]}} </a>
