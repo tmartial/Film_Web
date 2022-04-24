@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<style>
+li {
+  list-style: none;
+  display: inline-block;
+  width: 33%;
+  height: 50px;
+  text-align: center;
+}
+</style>
+<html>
+  <head>
+    <title>{{ page_title|default('My Cinema') }}</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="https://images.emojiterra.com/openmoji/v13.1/512px/1f3ac.png">
+{% block head %}{% endblock %}
+  </head>
+  <body>
+    <ul id="navbarMenu">
+      <li class="navItem"><a href="{{ url_for('welcome') }}">Welcome</a></li>
+      <li class="navItem"><a href="{{ url_for('movies') }}">Movies</a></li>
+      <li class="navItem"><a href="{{ url_for('bibliography') }}">Bibliography</a></li>
+    </ul>
+    
+
+{% block content %}{% endblock %}
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
